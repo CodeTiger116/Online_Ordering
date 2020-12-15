@@ -15,35 +15,6 @@
     <script src="//cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 
-    <style>
-        img {
-            object-fit: cover;
-        }
-
-        .col-xs-4 {
-            overflow: hidden;
-            margin: 0;
-        }
-
-        .list1 > div > ul > li > a {
-            text-align: center;
-            color: black;
-        }
-        .col-xs-2{
-            padding: 0;
-        }
-        .nothing{
-            height: 50px;
-            background:#1C1C1C;
-            margin-top: 10px;
-            border-radius: 6px;
-        }
-        .nothing>div>div>h1{
-            color: gray;
-            font-size: small;
-        }
-    </style>
-
 </head>
 <body>
 
@@ -59,7 +30,6 @@
             <ul class="nav navbar-nav">
                 <li><a href="${pageContext.request.contextPath}/index_1Servlet">选择餐桌</a></li>
                 <li><a href="${pageContext.request.contextPath}/indexServlet">主页</a></li>
-                <li><a href="#">入口三</a></li>
             </ul>
         </div>
         <div>

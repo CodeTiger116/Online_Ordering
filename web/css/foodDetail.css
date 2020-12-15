@@ -1,0 +1,211 @@
+.mid{
+    width: 1200px;
+    margin: 0 auto;
+
+}
+.per-mid-h{
+    margin-top: 10px;
+}
+.per-mid-m{
+    margin: 0 auto;
+    width: 1200px;
+    height: 450px;
+}
+.per-mid-m .picture{
+    width: 500px;
+    height: 450px;
+    float: left;
+}
+.per-mid-m .picture-1{
+    width: 500px;
+    height: 350px;
+}
+.per-mid-m .picture-1 img{
+    width: 500px;
+    height: 360px;
+}
+.per-mid-m .picture-others{
+    width: 500px;
+    height: 90px;
+}
+.per-mid-m .picture-others li{
+    float: left;
+    padding: 0 3px 0 3px;
+}
+.per-mid-m .picture-others li img{
+    width: 119px;
+    height: 80px;
+}
+.per-mid-m .scenicDet{
+    width: 695px;
+    height: 450px;
+    float: right;
+    padding: 10px 10px 10px 10px;
+}
+.scenicDet h3{
+    text-shadow: 2px 2px lime;
+    padding: 10px 0 10px 8px;
+    font-size: 50px;
+}
+.scenicDet .mid-r-m{
+    margin-left: 20px;
+}
+.mid-r-m .bianhao{
+     background-color: rgb(222,222,222);
+     font-size: 20px;
+     padding: 5px;
+     box-sizing: border-box;
+ }
+.mid-r-m .destin{
+    background-color: rgb(222,222,222);
+    font-size: 20px;
+    padding: 5px;
+    box-sizing: border-box;
+}
+.mid-r-m .fengefu{
+    width: 1px;
+    height: 40px;
+    border-left: 1px solid black;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.scenicDet table{
+    float: left;
+    border-collapse: separate;
+    border-spacing: 20px;
+}
+.scenicDet table tr td{
+    background-color: rgb(222,222,222);
+    font-size: 20px;
+    padding: 5px;
+    box-sizing: border-box;
+}
+.scenicDet .scenic-price{
+    background-color: rgb(222,222,222);
+    width: 100%;
+    height: 60px;
+    margin-left: 20px;
+}
+.scenic-price{
+    float: left;
+}
+.scenic-price :nth-child(1){
+    padding: 10px 0 10px 30px;
+    line-height: 70px;
+}
+.scenic-price :nth-child(2){
+    font-size: 35px;
+}
+.buy-button{
+    float: left;
+}
+.buy-button button{
+    width: 400px;
+    height: 40px;
+    margin-top: 20px;
+    margin-left: 140px;
+}
+
+.scenic-commnets{
+    margin-top: 20px;
+    width: 1200px;
+    height: 500px;
+    border: 1px solid rgb(222,222,222);
+}
+/*.scenic-commnets .comments-head{*/
+/*    width: 150px;*/
+/*    height: 40px;*/
+/*    padding: 0 30px 0 30px;*/
+/*    border: 1px solid #1c94c4;*/
+/*    border-bottom: none;*/
+/*    float: left;*/
+/*    line-height: 40px;*/
+/*    text-align: center;*/
+/*}*/
+/*.scenic-commnets .comments-head-r{*/
+/*    width: 1048px;*/
+/*    height: 40px;*/
+/*    border-bottom: 1px solid #1c94c4;*/
+/*    float: right;*/
+/*}*/
+/*.scenic-commnets .comments-detail{*/
+/*    width: 100%;*/
+/*    height: 460px;*/
+/*    border: 1px solid #1c94c4;*/
+/*    border-top: none;*/
+/*    float: left;*/
+/*}*/
+.scenic-commnets .scenic-commnets-head{
+    height: 40px;
+}
+.scenic-commnets-head li{
+    float: left;
+    width: 150px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    border: 1px solid #1c94c4;
+    border-bottom: none;
+    margin-top: -17px;
+}
+.scenic-commnets-head a{
+    color: black;
+}
+.scenic-commnets-head .active{
+    background-color: black;
+}
+.scenic-commnets-head .active a{
+    color: white;
+}
+.scenic-commnets .scenic-item{
+    display: none;
+}
+.scenic-commnets :nth-child(2){
+    display: block;
+}
+.scenic-commnets .scenic-detail{
+    padding: 0 30px 0 30px;
+}
+.scenic-commnets .scenic-detail h3{
+    text-align: center;
+    margin-top: 20px;
+}
+.scenic-comm{
+    padding: 0 30px 0 30px;
+    margin-top: 10px;
+}
+.people-messa{
+    width: 200px;
+    float: left;
+}
+.people-messa .head-con{
+    width: 50px;
+}
+.people-messa img{
+    width: 50px;
+    height: 50px;
+    border-radius: 150px;
+    float: left;
+}
+.people-messa .nicheng{
+    float: left;
+    margin-left: 10px;
+}
+.people-messa .add-time{
+    margin-left: 10px;
+}
+.people-comment{
+    width: 930px;
+    float: right;
+}
+.scenic-comm .fengefu{
+    margin-top: 30px;
+    width: 100%;
+    height: 1px;
+    border-top: 1px solid rgb(222,222,222);
+    float: left;
+}
+.people-comment img{
+    width: 200px;
+    height: 200px;
+}
