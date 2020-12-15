@@ -1,6 +1,7 @@
 package servlet.user;
 
 import bean.DinnerTable;
+import bean.User;
 import service.DinnerTableService;
 import service.impl.DinnerTableServiceImpl;
 
@@ -9,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
@@ -24,6 +26,7 @@ public class Index_1Servlet extends HttpServlet {
         List<DinnerTable> dinnerTables = service.findDinnerTables(tableStatus);
 
         request.setAttribute("dinnerTables",dinnerTables);
+
 
         //查询正在使用的餐桌
         int tableStatus_1 = 1;

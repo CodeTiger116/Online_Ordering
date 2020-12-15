@@ -60,49 +60,38 @@
         >
         <a href="#" class="c_66">菜品详情</a>
         >
-        <a href="#" class="c_66">${sceniceDetail.scenic_name}</a>
+        <a href="#" class="c_66">${food.food_name}</a>
     </div>
     <div class="per-mid-m" >
         <div class="picture">
-            <div class="picture-1">
-                <img src="${sceniceDetail.url1}">
+            <div  class="picture-1" style="border: solid 1px; overflow: hidden">
+                <img src="${pageContext.request.contextPath}/upload/food/${food.img}">
             </div>
         </div>
         <div class="scenicDet">
             <h3>
                 <i>${sceniceDetail.scenic_name}</i>
             </h3>
-            <div class="mid-r-m">
-                <span class="bianhao">编号&nbsp;:&nbsp;GZ0001</span>
-                <span class="fengefu"></span>
-                <span class="destin">目的地&nbsp;:&nbsp;上海</span>
-            </div>
+
             <div>
                 <table>
                     <tr>
-                        <td style="width: 100px">旅游类型</td>
-                        <td style="width: 300px">单人游</td>
+                        <td style="width: 100px">名称：</td>
+                        <td style="width: 300px">${food.food_name}</td>
                     </tr>
                     <tr>
-                        <td>行程天数</td>
-                        <td>1天</td>
-                    </tr>
-                    <tr>
-                        <td>联系电话</td>
-                        <td>1111111111</td>
+                        <td>描述：</td>
+                        <td>${food.remark}</td>
+
                     </tr>
                 </table>
             </div>
             <div class="scenic-price">
-                <font>
-                    价格:
-                </font>
-                <font>
-                    ￥${sceniceDetail.scenic_price.scenic_price/10*sceniceDetail.scenic_price.scenic_zk}
-                </font>
+                <td>价格：</td>
+                <td><a><s>￥${food.price}</s> &nbsp;&nbsp;&nbsp; <strong>￥${food.price * food.discount}</strong></a></td>
             </div>
             <div class="buy-button">
-                <button type="button" class="btn btn-outline-success" onclick="xadmin.open('预订景点票', '${ctx}/uSceninc/toScenicBuy?id=${sceniceDetail.id}',600,800)">预订</button>
+                <button type="button" class="btn btn-outline-success" >加入购物车</button>
             </div>
         </div>
     </div>

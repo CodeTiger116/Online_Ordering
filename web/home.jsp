@@ -124,7 +124,7 @@
                         <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">个人中心</a></li>
+                        <li><a href="${pageContext.request.contextPath}/findUserServlet?id=${user.ID}">个人中心</a></li>
                         <li><a href="#">购物车</a></li>
                         <li><a href="#">设置</a></li>
                         <li class="divider"></li>
@@ -267,7 +267,7 @@
                     <c:forEach items="${foods}" var="food" >
                         <div class="col-xs-6 col-md-3" style="height: 25%;width: 25%">
                             <div style="width: 100%;height: 100%">
-                                <a href="#" class="thumbnail">
+                                <a href="${pageContext.request.contextPath}/findFoodDetailServlet?foodID=${food.id}" class="thumbnail">
                                     <img src="${pageContext.request.contextPath}/upload/food/${food.img}" alt="${food.food_name}" height="100%" width="100%" />
                                 </a>
                                 <form action="" method="post">

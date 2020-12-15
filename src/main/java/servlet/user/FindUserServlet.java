@@ -16,7 +16,7 @@ public class FindUserServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 
-        String id = request.getParameter("ID");
+        String id = request.getParameter("id");
 
         //String id = "1";
         //System.out.println(id);

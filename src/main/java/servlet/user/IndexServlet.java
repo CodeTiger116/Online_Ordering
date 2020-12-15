@@ -57,6 +57,8 @@ public class IndexServlet extends HttpServlet {
 
         request.setAttribute("foods_1s",foods_1s);
         request.setAttribute("foods",foods);
+
+
         //System.out.println(foods);
         //System.out.println(foods_1s);
 

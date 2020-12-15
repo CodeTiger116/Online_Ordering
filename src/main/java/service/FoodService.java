@@ -36,12 +36,6 @@ public interface FoodService {
      */
     List<Food> findByTypeId(Integer foodTypeId);
 
-/*    *//**
-     * 根据id查询菜品
-     * @param id
-     * @return
-     *//*
-    Food findById(String id);*/
 
     /**
      * 修改菜品（用户修改了图片）

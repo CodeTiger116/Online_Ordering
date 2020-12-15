@@ -61,7 +61,7 @@
         <ul class="nav nav-pills nav-stacked ">
             <c:forEach items="${dinnerTables}" var="dinnerTable" varStatus="s">
                     <c:if test="${not empty dinnerTables}">
-                        <li><a href="${pageContext.request.contextPath}/indexServlet?id=${dinnerTable.id}">${dinnerTable.table_Name}</a></li>
+                        <li><a href="${pageContext.request.contextPath}/indexServlet?userID=${user.ID}&id=${dinnerTable.id}">${dinnerTable.table_Name}</a></li>
                     </c:if>
             </c:forEach>
 
