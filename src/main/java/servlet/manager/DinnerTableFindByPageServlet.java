@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Map;
 
 @WebServlet("/dinnerTableFindByPageServlet")
 public class DinnerTableFindByPageServlet extends HttpServlet {
@@ -33,14 +34,21 @@ public class DinnerTableFindByPageServlet extends HttpServlet {
 
 
 
+        //--------------------------复杂条件查询----------------------------
+        //获取条件查询参数
+        Map<String, String[]> condition = request.getParameterMap();
+
         //调用service查询
 
         DinnerTableService service = new DinnerTableServiceImpl();
-        PageBean<DinnerTable> pb = service.findByPage(currentPage,rows);
-        System.out.println(pb);
+        PageBean<DinnerTable> pb = service.findByPage(currentPage,rows,condition);
+        //System.out.println(pb);
 
         //将PageBean存入request
         request.setAttribute("pb",pb);
+
+        //存入查询条件，用于回显
+        request.setAttribute("condition",condition);
 
         //转发
         //request.getRequestDispatcher("/admin_dinnerTableList.jsp").forward(request,response);

@@ -11,10 +11,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Map;
 
 @WebServlet("/foodFindByPageServlet")
 public class FoodFindByPageServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        request.setCharacterEncoding("utf-8");
 
         //获取参数
         String currentPage = request.getParameter("currentPage");  //当前页码
@@ -28,16 +31,22 @@ public class FoodFindByPageServlet extends HttpServlet {
             rows = "5";
         }
 
+        //--------------------------复杂条件查询----------------------------
+        //获取条件查询参数
+        Map<String, String[]> condition = request.getParameterMap();
 
 
         //调用service查询
 
         FoodService service = new FoodServiceImpl();
-        PageBean<Food> pb = service.findUserByPage(currentPage,rows);
+        PageBean<Food> pb = service.findUserByPage(currentPage,rows,condition);
         //System.out.println(pb);
 
         //将PageBean存入request
         request.setAttribute("pb",pb);
+
+        //存入查询条件，用于回显
+        request.setAttribute("condition",condition);
 
         //转发
         //request.getRequestDispatcher("/admin_foodList.jsp").forward(request,response);

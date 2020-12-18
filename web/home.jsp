@@ -68,6 +68,15 @@
             }
         }
 
+        //价格排序
+       function priceSort(){
+
+            //获取餐桌id和菜品类型id
+            var foodTypeId = $("#foodTypeId").val();
+            var dinnerTableId = $("#dinnerTableId").val();
+            window.location.href="${pageContext.request.contextPath}/foodPriceSortServlet?dinnerTableId="+dinnerTableId+"&foodTypeId="+foodTypeId;
+        }
+
     </script>
 
 
@@ -245,9 +254,12 @@
                             <div >
                                 <ul class="nav navbar-nav">
                                     <li><a href="#">默认</a></li>
-                                    <li><a href="#">价格</a></li>
-                                    <li><a href="#">销量</a></li>
-                                    <li><a href="#">好评最多</a></li>
+                                    <form action="" method="">
+                                        <li><a onclick="priceSort()" >价格</a></li>
+                                    </form>
+
+<%--                                    <li><a href="#">销量</a></li>
+                                    <li><a href="#">好评最多</a></li>--%>
                                 </ul>
                             </div>
 
@@ -267,23 +279,19 @@
                     <c:forEach items="${foods}" var="food" >
                         <div class="col-xs-6 col-md-3" style="height: 25%;width: 25%">
                             <div style="width: 100%;height: 100%">
+                                <div style="width: 100%; height: 80%;">
                                 <a href="${pageContext.request.contextPath}/findFoodDetailServlet?foodID=${food.id}" class="thumbnail">
-                                    <img src="${pageContext.request.contextPath}/upload/food/${food.img}" alt="${food.food_name}" height="100%" width="100%" />
+                                        <img src="${pageContext.request.contextPath}/upload/food/${food.img}" alt="${food.food_name}" width="100%"; height="80%"/>
                                 </a>
-                                <form action="" method="post">
-                                    <input type="hidden" id="dinnerTableId" name="dinnerTableId" value="${dinnerTable.id}">
-                                    <input type="hidden" id="foodTypeId" name="foodTypeId" value="${food.foodType_id}">
+                                </div>
+                                <div style="width: 100% ;height: 20%">
 
-                                    <button type="button" onclick="addShopCar(${food.id})">
-                                        加入购物车
-                                    </button>
-                                </form>
+                                        <input type="hidden" id="dinnerTableId" name="dinnerTableId" value="${dinnerTable.id}">
+                                        <input type="hidden" id="foodTypeId" name="foodTypeId" value="${food.foodType_id}">
 
+                                        <h5>${food.food_name}</h5> <button type="button" onclick="addShopCar(${food.id})">加入购物车</button>
+                                </div>
 
-                            </div>
-
-                            <div class="caption">
-                                <h5>${food.food_name}</h5>
                             </div>
                         </div>
                     </c:forEach>

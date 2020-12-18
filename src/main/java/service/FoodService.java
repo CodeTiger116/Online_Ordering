@@ -4,6 +4,7 @@ import bean.Food;
 import bean.PageBean;
 
 import java.util.List;
+import java.util.Map;
 
 public interface FoodService {
 
@@ -16,11 +17,13 @@ public interface FoodService {
 
     /**
      * 分页查询
+     * 分页条件查询
      * @param currentPage
      * @param rows
+     * @param condition
      * @return
      */
-    PageBean<Food> findUserByPage(String currentPage, String rows);
+    PageBean<Food> findUserByPage(String currentPage, String rows, Map<String, String[]> condition);
 
     /**
      * 添加菜品

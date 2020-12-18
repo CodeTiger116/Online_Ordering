@@ -9,7 +9,6 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>餐桌管理</title>
 
 
 <%--    <!-- 1. 导入CSS的全局样式 -->
@@ -33,7 +32,39 @@
 <body>
 
 <%--<jsp:include page="admin_home.jsp"/>--%>
-<div class="container">
+
+
+<div style="float: left; margin-top: 15px">
+    <form class="form-inline" action="${pageContext.request.contextPath}/dinnerTableFindByPageServlet" method="post">
+
+        <div class="form-group">
+            <label for="table_status">使用状态:</label>
+
+            <select id="table_status" name="table_status" class="form-control" >
+                <option value="" selected>全部</option>
+                <option value="0">空闲</option>
+                <option value="1">正在使用</option>
+
+            </select>
+
+
+        </div>
+        <div class="form-group">
+            <label for="disabled">是否撤销:</label>
+            <select id="disabled" name="disabled" class="form-control" >
+                <option value="" selected>全部</option>
+                <option value="0">未撤销</option>
+                <option value="1">已撤销</option>
+
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-default">查询</button>
+    </form>
+</div>
+
+
+<div class="">
 
     <div style="float: right; margin: 5px">
         <a class="btn btn-primary" href="${pageContext.request.contextPath}/admin_dinnerTableAdd.jsp">添加餐桌</a></td>
@@ -42,7 +73,7 @@
 
     <table border="1" class="table table-bordered table-hover">
         <tr class="success">
-            <th><input type = "checkbox"></th>
+
             <th>编号</th>
             <th>餐桌名称</th>
             <th>使用状态</th>
@@ -55,10 +86,15 @@
 
         <c:forEach items="${pb.list}" var = "dinnertable" varStatus="s">
             <tr>
-                <th><input type = "checkbox"></th>
+
                 <td>${s.count}</td>
                 <td>${dinnertable.table_Name}</td>
-                <td>${dinnertable.table_status}</td>
+                <c:if test="${dinnertable.table_status == 0}">
+                    <td>空闲</td>
+                </c:if>
+                <c:if test="${dinnertable.table_status == 1}">
+                    <td>正在使用</td>
+                </c:if>
                 <td>${dinnertable.begin_use_date}</td>
                 <td>${dinnertable.create_date}</td>
                 <td>${dinnertable.update_date}</td>

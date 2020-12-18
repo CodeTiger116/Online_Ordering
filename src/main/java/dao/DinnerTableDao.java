@@ -1,9 +1,9 @@
 package dao;
 
 import bean.DinnerTable;
-import bean.Food;
 
 import java.util.List;
+import java.util.Map;
 
 public interface DinnerTableDao {
 
@@ -17,16 +17,18 @@ public interface DinnerTableDao {
     /**
      * 查询总行数（用以分页查询）
      * @return
+     * @param condition
      */
-    int findTotalCount();
+    int findTotalCount(Map<String, String[]> condition);
 
     /**
      *分页查询
      * @param start
      * @param rows
+     * @param condition
      * @return
      */
-    List<DinnerTable> findByPage(int start, int rows);
+    List<DinnerTable> findByPage(int start, int rows, Map<String, String[]> condition);
 
     /**
      * 逻辑删除

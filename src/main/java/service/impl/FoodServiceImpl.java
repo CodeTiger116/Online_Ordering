@@ -7,6 +7,7 @@ import dao.impl.FoodDaoImpl;
 import service.FoodService;
 
 import java.util.List;
+import java.util.Map;
 
 public class FoodServiceImpl implements FoodService {
 
@@ -18,7 +19,7 @@ public class FoodServiceImpl implements FoodService {
     }
 
     @Override
-    public PageBean<Food> findUserByPage(String _currentPage, String _rows) {
+    public PageBean<Food> findUserByPage(String _currentPage, String _rows, Map<String, String[]> condition) {
 
         int currentPage = Integer.parseInt(_currentPage);
         int rows = Integer.parseInt(_rows);
@@ -27,11 +28,11 @@ public class FoodServiceImpl implements FoodService {
         PageBean<Food> pb = new PageBean<Food>();
 
         //调用dao查询总记录数
-        int totalCount = dao.findTotalCount();
+        int totalCount = dao.findTotalCount(condition);
         int start = (currentPage - 1) * rows;
 
         //调用dao查询list集合
-        List<Food> list = dao.findByPage(start,rows);
+        List<Food> list = dao.findByPage(start,rows,condition);
 
         //计算总页码
         int totalPage = totalCount % rows  == 0 ? (totalCount / rows) : (totalCount / rows + 1);

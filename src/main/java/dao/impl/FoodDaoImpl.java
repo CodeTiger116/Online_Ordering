@@ -6,7 +6,10 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import utils.JDBCUtils;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class FoodDaoImpl implements FoodDao {
 
@@ -21,16 +24,71 @@ public class FoodDaoImpl implements FoodDao {
     }
 
     @Override
-    public int findTotalCount() {
-        String sql = "select count(*) from tb_food ";
-        return template.queryForObject(sql,Integer.class);
+    public int findTotalCount(Map<String, String[]> condition) {
+        //1、定义模板初始化sql
+        String sql = "select count(*) from tb_food where 1 = 1";
+        StringBuilder sb = new StringBuilder(sql);
+        //2、遍历map
+        Set<String> keySet = condition.keySet();
+
+        //定义参数的集合
+        List<Object> params = new ArrayList<Object>();
+
+        for (String key : keySet){
+
+            //排除分页的条件参数
+            if("currentPage".equals(key) || "rows".equals(key)){
+                continue;
+            }
+
+            //获取value
+            String value = condition.get(key)[0];
+            //判断value是否有值
+            if(value != null && !"".equals(value)){
+                sb.append(" and " + key + " like ? ");
+                params.add("%"+value+"%");//条件的值
+            }
+        }
+        //System.out.println(sb.toString());
+        //System.out.println(params);
+
+        return template.queryForObject(sb.toString(),Integer.class,params.toArray());
     }
 
     @Override
-    public List<Food> findByPage(int start, int rows) {
-        String sql = "select * from tb_food limit ?, ?";
+    public List<Food> findByPage(int start, int rows, Map<String, String[]> condition) {
+        String sql = "select * from tb_food where 1 = 1";
+        StringBuilder sb = new StringBuilder(sql);
+        //2、遍历map
+        Set<String> keySet = condition.keySet();
 
-        return template.query(sql,new BeanPropertyRowMapper<Food>(Food.class),start,rows);
+        //定义参数的集合
+        List<Object> params = new ArrayList<Object>();
+
+        for (String key : keySet){
+
+            //排除分页的条件参数
+            if("currentPage".equals(key) || "rows".equals(key)){
+                continue;
+            }
+
+            //获取value
+            String value = condition.get(key)[0];
+            //判断value是否有值
+            if(value != null && !"".equals(value)){
+                sb.append(" and " + key + " like ? ");
+                params.add("%"+value+"%");//条件的值
+            }
+        }
+
+        //添加分页查询
+        sb.append(" limit ?,? ");
+        //添加分页查询参数值
+        params.add(start);
+        params.add(rows);
+
+
+        return template.query(sb.toString(),new BeanPropertyRowMapper<Food>(Food.class),params.toArray());
     }
 
     @Override

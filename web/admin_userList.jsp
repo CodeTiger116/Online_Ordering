@@ -9,7 +9,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>用户信息</title>
+
 
     <script>
         function deleteUser(id){
@@ -24,29 +24,10 @@
 </head>
 <body>
 
-<div class="container" style="margin-top: 20px">
-    <div style="float: left">
-        <form class="form-inline">
-            <div class="form-group">
-                <label for="exampleInputName2">条件1</label>
-                <input type="text" class="form-control" id="exampleInputName2" >
-            </div>
-            <div class="form-group">
-                <label for="exampleInputName2">条件2</label>
-                <input type="text" class="form-control" id="exampleInputName3" >
-            </div>
-            <div class="form-group">
-                <label for="exampleInputEmail2">条件3</label>
-                <input type="email" class="form-control" id="exampleInputEmail2">
-            </div>
-
-            <button type="submit" class="btn btn-default">查询</button>
-        </form>
-    </div>
+<div class="" style="margin-top: 20px">
 
     <div style="float: right; margin: 5px">
 
-        <%--<a class="btn btn-primary" href="${pageContext.request.contextPath}/add.jsp">添加联系人</a></td>--%>
         <a class="btn btn-primary" href="${pageContext.request.contextPath}/admin_home.jsp">返回</a></td>
     </div>
 

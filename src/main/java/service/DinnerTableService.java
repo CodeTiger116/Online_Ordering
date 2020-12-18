@@ -4,6 +4,7 @@ import bean.DinnerTable;
 import bean.PageBean;
 
 import java.util.List;
+import java.util.Map;
 
 public interface DinnerTableService {
 
@@ -17,9 +18,10 @@ public interface DinnerTableService {
      * 分页查询餐桌
      * @param currentPage
      * @param rows
+     * @param condition
      * @return
      */
-    PageBean<DinnerTable> findByPage(String currentPage, String rows);
+    PageBean<DinnerTable> findByPage(String currentPage, String rows, Map<String, String[]> condition);
 
     /**
      * 逻辑删除餐桌

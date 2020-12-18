@@ -18,22 +18,36 @@
 </head>
 <body>
 
-<div class="container">
-    <h3 style="text-align: center">菜品信息列表</h3>
+<div >
 
-    <div style="float: left">
-        <form class="form-inline">
+    <div style="float: left; margin-top: 15px">
+        <form class="form-inline" action="${pageContext.request.contextPath}/foodFindByPageServlet" method="post">
             <div class="form-group">
-                <label for="exampleInputName2">条件1</label>
-                <input type="text" class="form-control" id="exampleInputName22" >
+                <label for="food_name">名称:</label>
+                <input id = "food_name" name="food_name" type="text" class="form-control" value="${condition.name[0]}" >
             </div>
             <div class="form-group">
-                <label for="exampleInputName2">条件2</label>
-                <input type="text" class="form-control" id="exampleInputName33" >
+                <label for="food_type">类型:</label>
+
+                    <select id="food_type" name="foodType_id" class="form-control" >
+                        <option value="" selected>全部</option>
+                        <option value="1">新品上市</option>
+                        <option value="2">超值套餐</option>
+                        <option value="3">主食</option>
+                        <option value="4">甜点/饮料</option>
+                        <option value="5">小食</option>
+                    </select>
+
+
             </div>
             <div class="form-group">
-                <label for="exampleInputEmail2">条件3</label>
-                <input type="email" class="form-control" id="exampleInputEmail22">
+                <label for="disabled">状态:</label>
+                <select id="disabled" name="disabled" class="form-control" >
+                    <option value="" selected>全部</option>
+                    <option value="0">未删除</option>
+                    <option value="1">已删除</option>
+
+                </select>
             </div>
 
             <button type="submit" class="btn btn-default">查询</button>
@@ -54,7 +68,7 @@
            text-align: left ">
 
         <tr class="success">
-            <th><input type = "checkbox"></th>
+
             <th>编号</th>
             <th>名称</th>
             <th>菜品类型</th>
@@ -71,7 +85,7 @@
 
         <c:forEach items="${pb.list}" var = "food" varStatus="s">
             <tr>
-                <th><input type = "checkbox"></th>
+
                 <td>${s.count + (pb.currentPage - 1) * 5}</td>
                 <td>${food.food_name}</td>
                 <td>${food.foodType_id}</td>
@@ -89,8 +103,9 @@
         </c:forEach>
 
     </table>
+</div>
 
-    <div class="container">
+    <div>
 
         <nav aria-label="Page navigation">
             <ul class="pagination">
@@ -102,18 +117,18 @@
                     <li>
                 </c:if>
 
-                    <a href="${pageContext.request.contextPath}/foodFindByPageServlet?currentPage=${pb.currentPage==1?1:pb.currentPage-1}&rows=5" aria-label="Previous">
+                    <a href="${pageContext.request.contextPath}/foodFindByPageServlet?currentPage=${pb.currentPage==1?1:pb.currentPage-1}&rows=5&food_name=${condition.food_name[0]}&food_TypeId=${condition.food_TypeId[0]}&disabled=${condition.disabled[0]}" aria-label="Previous">
                         <span aria-hidden="true">&laquo;</span>
                     </a>
                 </li>
                 <c:forEach begin="1" end="${pb.totalPage}" var="i">
 
                     <c:if test="${pb.currentPage == i}">
-                        <li class="active"><a href="${pageContext.request.contextPath}/foodFindByPageServlet?currentPage=${i}&rows=5">${i}</a></li>
+                        <li class="active"><a href="${pageContext.request.contextPath}/foodFindByPageServlet?currentPage=${i}&rows=5&food_name=${condition.food_name[0]}&food_TypeId=${condition.food_TypeId[0]}&disabled=${condition.disabled[0]}">${i}</a></li>
                     </c:if>
 
                     <c:if test="${pb.currentPage != i}">
-                        <li><a href="${pageContext.request.contextPath}/foodFindByPageServlet?currentPage=${i}&rows=5">${i}</a></li>
+                        <li><a href="${pageContext.request.contextPath}/foodFindByPageServlet?currentPage=${i}&rows=5&food_name=${condition.food_name[0]}&food_TypeId=${condition.food_TypeId[0]}&disabled=${condition.disabled[0]}">${i}</a></li>
                     </c:if>
 
                 </c:forEach>
@@ -124,7 +139,7 @@
                 <c:if test="${pb.currentPage != pb.totalPage}">
                     <li>
                 </c:if>
-                    <a href="${pageContext.request.contextPath}/foodFindByPageServlet?currentPage=${pb.currentPage==pb.totalPage?pb.totalPage:pb.currentPage+1}&rows=5" aria-label="Next">
+                    <a href="${pageContext.request.contextPath}/foodFindByPageServlet?currentPage=${pb.currentPage==pb.totalPage?pb.totalPage:pb.currentPage+1}&rows=5&food_name=${condition.name[0]}&food_TypeId=${condition.food_TypeId[0]}&disabled=${condition.disabled[0]}" aria-label="Next">
                         <span aria-hidden="true">&raquo;</span>
                     </a>
                 </li>
@@ -133,9 +148,8 @@
                 </span>
             </ul>
         </nav>
-    </div>
 
-</div>
+    </div>
 
 </body>
 </html>

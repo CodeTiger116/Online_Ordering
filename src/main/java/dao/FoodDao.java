@@ -3,6 +3,7 @@ package dao;
 import bean.Food;
 
 import java.util.List;
+import java.util.Map;
 
 public interface FoodDao {
     /**
@@ -14,16 +15,18 @@ public interface FoodDao {
     /**
      * 查询总记录数
      * @return
+     * @param condition
      */
-    int findTotalCount();
+    int findTotalCount(Map<String, String[]> condition);
 
     /**
      * 分页查询
      * @param start
      * @param rows
+     * @param condition
      * @return
      */
-    List<Food> findByPage(int start, int rows);
+    List<Food> findByPage(int start, int rows, Map<String, String[]> condition);
 
     /**
      * 添加菜品

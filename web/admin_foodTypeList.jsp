@@ -9,7 +9,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>菜品管理</title>
+
 
 <%--    <!-- 1. 导入CSS的全局样式 -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -19,7 +19,7 @@
     <script src="js/bootstrap.min.js"></script>--%>
 </head>
 <body>
-<div class="container">
+<div class="">
 
     <div style="float: right; margin: 5px">
         <a class="btn btn-primary" href="${pageContext.request.contextPath}/admin_home.jsp">返回</a></td>
@@ -27,7 +27,7 @@
 
     <table border="1" class="table table-bordered table-hover">
         <tr class="success">
-            <th><input type = "checkbox"></th>
+
             <th>编号</th>
             <th>名称</th>
             <th>创建时间</th>
@@ -39,7 +39,7 @@
 
         <c:forEach items="${foodTypes}" var = "foodType" varStatus="s">
             <tr>
-                <th><input type = "checkbox"></th>
+
                 <td>${s.count}</td>
                 <td>${foodType.type_name}</td>
                 <td>${foodType.create_date}</td>

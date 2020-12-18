@@ -7,6 +7,7 @@ import dao.impl.DinnerTableDaoImpl;
 import service.DinnerTableService;
 
 import java.util.List;
+import java.util.Map;
 
 public class DinnerTableServiceImpl implements DinnerTableService {
     private DinnerTableDao dao = new DinnerTableDaoImpl();
@@ -18,7 +19,7 @@ public class DinnerTableServiceImpl implements DinnerTableService {
     }
 
     @Override
-    public PageBean<DinnerTable> findByPage(String _currentPage, String _rows) {
+    public PageBean<DinnerTable> findByPage(String _currentPage, String _rows, Map<String, String[]> condition) {
 
         int currentPage = Integer.parseInt(_currentPage);
         int rows = Integer.parseInt(_rows);
@@ -31,14 +32,14 @@ public class DinnerTableServiceImpl implements DinnerTableService {
         //pb.setRows(rows);
 
         //调用dao查询总记录数
-        int totalCount = dao.findTotalCount();
+        int totalCount = dao.findTotalCount(condition);
         //pb.setTotalCount(totalCount);
 
         int start = (currentPage - 1) * rows;
 
         //调用dao查询list集合
         //List<DinnerTable> list = dao.findByPage(start,rows);
-        List<DinnerTable> list = dao.findByPage(start,rows);
+        List<DinnerTable> list = dao.findByPage(start,rows,condition);
         //pb.setList(list);
 
         //计算总页码
