@@ -54,40 +54,46 @@
 </nav>
 
 
+<div class="container-fluid">
+    <div class="row">
+        <div class="list1 panel panel-default col-xs-6" style="height: auto">
+            <div class="panel-heading" style="text-align: center;">可用餐桌</div>
+            <div class="panel-body" style="height:400px">
+                <ul class="nav nav-pills nav-stacked ">
+                    <c:forEach items="${dinnerTables}" var="dinnerTable" varStatus="s">
+                        <c:if test="${not empty dinnerTables}">
+                            <li><a href="${pageContext.request.contextPath}/indexServlet?userID=${user.ID}&id=${dinnerTable.id}">${dinnerTable.table_Name}</a></li>
+                        </c:if>
+                    </c:forEach>
 
-<div class="list1 panel panel-default" style="height: auto">
-    <div class="panel-heading" style="text-align: center;">可用餐桌</div>
-    <div class="panel-body" style="height:400px">
-        <ul class="nav nav-pills nav-stacked ">
-            <c:forEach items="${dinnerTables}" var="dinnerTable" varStatus="s">
-                    <c:if test="${not empty dinnerTables}">
-                        <li><a href="${pageContext.request.contextPath}/indexServlet?userID=${user.ID}&id=${dinnerTable.id}">${dinnerTable.table_Name}</a></li>
-                    </c:if>
-            </c:forEach>
+
+                </ul>
+
+            </div>
+
+        </div>
+        <div class="list1 panel panel-default col-xs-6">
+            <div class="panel-heading" style="text-align: center;">正在使用的餐桌</div>
+            <div class="panel-body" style="height:400px">
+                <ul class="nav nav-pills nav-stacked ">
+                    <c:forEach items="${dinnerTables_1}" var="dinnerTable_1" varStatus="s">
+                        <c:if test="${not empty dinnerTables_1}">
+                            <li><a href="${pageContext.request.contextPath}/indexServlet?id=${dinnerTable_1.id}">${dinnerTable_1.table_Name}</a></li>
+                        </c:if>
+                    </c:forEach>
 
 
-        </ul>
+                </ul>
 
+            </div>
+
+        </div>
     </div>
 
 </div>
 
-<div class="list1 panel panel-default">
-    <div class="panel-heading" style="text-align: center;">正在使用的餐桌</div>
-    <div class="panel-body" style="height:400px">
-        <ul class="nav nav-pills nav-stacked ">
-            <c:forEach items="${dinnerTables_1}" var="dinnerTable_1" varStatus="s">
-                <c:if test="${not empty dinnerTables_1}">
-                    <li><a href="${pageContext.request.contextPath}/indexServlet?id=${dinnerTable_1.id}">${dinnerTable_1.table_Name}</a></li>
-                </c:if>
-            </c:forEach>
 
 
-        </ul>
-
-    </div>
-
-</div>
 
 </body>
 </html>

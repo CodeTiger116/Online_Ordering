@@ -1,6 +1,7 @@
 package dao;
 
 import bean.DinnerTable;
+import bean.News;
 
 import java.util.List;
 import java.util.Map;
@@ -67,4 +68,5 @@ public interface DinnerTableDao {
      * @param dinnerTable
      */
     void updateDinnerTable(DinnerTable dinnerTable);
+
 }

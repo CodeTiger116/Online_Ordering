@@ -80,6 +80,8 @@
                 <li><a href="${pageContext.request.contextPath}/foodTypeListServlet" id="three">菜系管理</a></li>
                 <li><a href="${pageContext.request.contextPath}/foodFindByPageServlet" id="four">菜品管理</a></li>
                 <li><a href="${pageContext.request.contextPath}/orderFindByPageServlet" id="five">订单管理</a></li>
+                <li><a href="${pageContext.request.contextPath}/newsFindServlet?method=adminfind" id="six">公告管理</a></li>
+
 
             </ul>
         </div>
