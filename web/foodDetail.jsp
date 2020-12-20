@@ -1,5 +1,6 @@
 <%@page language="java" contentType="text/html; character = UTF-8" pageEncoding="utf-8" %>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <title>菜品详情</title>
@@ -14,7 +15,21 @@
 
     <link href="css/foodDetail.css" type="text/css" rel="stylesheet">
 
+
+    <script type="text/javascript">
+        //加入购物车
+        function  addShopCar(foodId){
+            //foodTypeId   //刷新界面后为当前菜品类型
+            //加入商品到购物车，需要知道foodId  dinnerTableId
+            window.location.href = "${pageContext.request.contextPath}/shopCarServlet?dinnerTableId=${dinnerTableId}&foodId=${food.id}&method=add";
+        }
+
+    </script>
+
 </head>
+
+
+
 <body>
 
 <nav class="navbar navbar-inverse" role="navigation" id="mynav" style="margin: 0">
@@ -28,8 +43,8 @@
         <div>
             <ul class="nav navbar-nav">
                 <li><a href="${pageContext.request.contextPath}/index_1Servlet">选择餐桌</a></li>
-                <li><a href="${pageContext.request.contextPath}/indexServlet">主页</a></li>
-                <li><a href="${pageContext.request.contextPath}/orderServlet?dinnerTableId=${dinnerTable.id}&method=checkOrder">我的订单</a></li>
+                <%--<li><a href="${pageContext.request.contextPath}/indexServlet">主页</a></li>--%>
+                <%--<li><a href="${pageContext.request.contextPath}/orderServlet?dinnerTableId=${dinnerTable.id}&method=checkOrder">我的订单</a></li>--%>
             </ul>
         </div>
         <div>
@@ -41,7 +56,6 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li><a href="#">个人中心</a></li>
-                        <li><a href="#">购物车</a></li>
                         <li><a href="#">设置</a></li>
                         <li class="divider"></li>
                         <li><a href="#">退出登录</a></li>
@@ -91,7 +105,7 @@
                 <td><a><s>￥${food.price}</s> &nbsp;&nbsp;&nbsp; <strong>￥${food.price * food.discount}</strong></a></td>
             </div>
             <div class="buy-button">
-                <button type="button" class="btn btn-outline-success" >加入购物车</button>
+                <button type="button" onclick="addShopCar()" class="btn btn-outline-success" >加入购物车</button>
             </div>
         </div>
     </div>

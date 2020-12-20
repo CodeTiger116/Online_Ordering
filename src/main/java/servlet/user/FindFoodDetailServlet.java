@@ -16,11 +16,13 @@ public class FindFoodDetailServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String id = request.getParameter("foodID");
+        String dinnerTableId = request.getParameter("dinnerTableId");
 
         FoodService foodService = new FoodServiceImpl();
         Food food = foodService.findByFoodId(Integer.parseInt(id));
 
         request.setAttribute("food",food);
+        request.setAttribute("dinnerTableId",dinnerTableId);
         request.getRequestDispatcher("/foodDetail.jsp").forward(request,response);
 
     }

@@ -25,6 +25,9 @@ public class ShopCarServlet extends HttpServlet {
 
         //加入购物车后，页面刷新，返回原来的菜品类型界面
         String foodTypeId = request.getParameter("foodTypeId");
+        if(foodTypeId == null){
+            foodTypeId = "1";
+        }
 
 
         Integer foodIdInt = Integer.parseInt(foodId);

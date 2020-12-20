@@ -27,6 +27,8 @@
 
 
     <script type="text/javascript">
+
+        //加入购物车
         function  addShopCar(foodId){
             var dinnerTableId = $("#dinnerTableId").val();
             //foodTypeId   //刷新界面后为当前菜品类型
@@ -140,7 +142,7 @@
                         <li><a href="#">退出登录</a></li>
                     </ul>
                 </li>
-                <li><a href="#">商家中心</a></li>
+                <li><a href="${pageContext.request.contextPath}/admin_login.jsp">商家中心</a></li>
             </ul>
         </div>
     </div>
@@ -280,7 +282,7 @@
                         <div class="col-xs-6 col-md-3" style="height: 25%;width: 25%">
                             <div style="width: 100%;height: 100%">
                                 <div style="width: 100%; height: 80%;">
-                                <a href="${pageContext.request.contextPath}/findFoodDetailServlet?foodID=${food.id}" class="thumbnail">
+                                <a href="${pageContext.request.contextPath}/findFoodDetailServlet?dinnerTableId=${dinnerTable.id}&foodID=${food.id}" class="thumbnail">
                                         <img src="${pageContext.request.contextPath}/upload/food/${food.img}" alt="${food.food_name}" width="100%"; height="80%"/>
                                 </a>
                                 </div>

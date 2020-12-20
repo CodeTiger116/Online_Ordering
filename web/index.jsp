@@ -30,8 +30,8 @@
     }
   </script>
 </head>
-<body>
-<div class="container" style="width: 400px;">
+<body background="images/timg_bg.jpg">
+<div class="container" style="width: 400px; float: right; margin-right: 200px; background: white;margin-top: 150px;border-radius: 12px">
   <h3 style="text-align: center;">用户登录</h3>
   <form action="${pageContext.request.contextPath}/userLoginServlet" method="post">
     <div class="form-group">
