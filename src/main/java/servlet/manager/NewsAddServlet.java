@@ -41,7 +41,7 @@ public class NewsAddServlet extends HttpServlet {
         service.addNews(news);
 
 
-        response.sendRedirect(request.getContextPath()+"/newsFindServlet");
+        response.sendRedirect(request.getContextPath()+"/newsFindServlet?method=adminfind");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

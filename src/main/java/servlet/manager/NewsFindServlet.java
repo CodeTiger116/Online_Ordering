@@ -20,6 +20,9 @@ public class NewsFindServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String method = request.getParameter("method");
+        String newsId = request.getParameter("newsId");
+
+        //System.out.println(newsId);
 
 
         NewsService service = new NewsServiceImpl();
@@ -36,7 +39,22 @@ public class NewsFindServlet extends HttpServlet {
             request.getRequestDispatcher("/admin_home.jsp").forward(request,response);
         }
         else if(method != null && method.equals("homefind")){
-            request.getRequestDispatcher("/user_news.jsp").forward(request,response);
+
+            News newsDetail = new News();
+
+            if(newsId == null || newsId.equals("") ){
+                //查询默认第一条
+                Integer newsIdInt = news.get(0).getId();
+                newsDetail = service.findByNewsId(newsIdInt);
+
+                //System.out.println(newsDetail);
+
+            }else {
+                newsDetail = service.findByNewsId(Integer.parseInt(newsId));
+            }
+
+            request.setAttribute("newsDetail" ,newsDetail);
+            request.getRequestDispatcher("/newsItem.jsp").forward(request,response);
         }
     }
 

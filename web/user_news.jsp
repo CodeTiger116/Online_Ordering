@@ -13,8 +13,6 @@
 </head>
 <body>
 <c:forEach items="${news}" var="neww">
-    ${neww.title}<br>
-    ${neww.content}<br><br>
 
 </c:forEach>
 </body>

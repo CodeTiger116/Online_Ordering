@@ -9,9 +9,14 @@
 
 <html>
 <head>
-    <title>我的信息</title>
+
+    <title>个人中心</title>
+
 </head>
 <body>
+
+
+
 
 ${user.ID}<br>
 我的用户名：${user.LOGIN_NAME}<br>

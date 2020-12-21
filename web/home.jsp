@@ -130,6 +130,7 @@
                 <li>
                     <a href="${pageContext.request.contextPath}/orderServlet?dinnerTableId=${dinnerTable.id}&method=checkOrder">我的订单</a>
                 </li>
+                <li><a href="${pageContext.request.contextPath}/newsFindServlet?method=homefind">新闻中心</a></li>
             </ul>
         </div>
         <div>
