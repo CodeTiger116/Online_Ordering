@@ -28,11 +28,13 @@ public class Index_1Servlet extends HttpServlet {
         request.setAttribute("dinnerTables",dinnerTables);
 
 
+
         //查询正在使用的餐桌
         int tableStatus_1 = 1;
         List<DinnerTable> dinnerTables_1 = service.findDinnerTables(tableStatus_1);
 
         request.setAttribute("dinnerTables_1",dinnerTables_1);
+
 
         //System.out.println(dinnerTables_1);
 

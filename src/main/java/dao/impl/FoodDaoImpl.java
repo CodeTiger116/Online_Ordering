@@ -131,4 +131,22 @@ public class FoodDaoImpl implements FoodDao {
         Food food = template.queryForObject(sql, new BeanPropertyRowMapper<Food>(Food.class), foodId);
         return food;
     }
+
+    @Override
+    public List<Food> sortByPrice() {
+        String sql = "SELECT * FROM tb_food ORDER BY price ASC;";
+        List<Food> foods = template.query(sql, new BeanPropertyRowMapper<Food>(Food.class));
+        return foods;
+    }
+
+    @Override
+    public List<Food> searchByName(String searchName) {
+        String sql = "select * from tb_food where food_name like ?";
+
+        List<Object> params = new ArrayList<Object>();
+        params.add("%"+searchName+"%");
+
+        List<Food> foods = template.query(sql, new BeanPropertyRowMapper<Food>(Food.class),params.toArray());
+        return foods;
+    }
 }

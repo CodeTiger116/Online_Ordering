@@ -76,7 +76,7 @@
             //获取餐桌id和菜品类型id
             var foodTypeId = $("#foodTypeId").val();
             var dinnerTableId = $("#dinnerTableId").val();
-            window.location.href = "${pageContext.request.contextPath}/foodPriceSortServlet?dinnerTableId=" + dinnerTableId + "&foodTypeId=" + foodTypeId;
+            window.location.href = "${pageContext.request.contextPath}/indexServlet?method=sort&id=" + dinnerTableId + "&foodTypeId=" + foodTypeId;
         }
 
     </script>
@@ -126,7 +126,7 @@
         <div>
             <ul class="nav navbar-nav">
                 <li><a href="${pageContext.request.contextPath}/index_1Servlet">选择餐桌</a></li>
-                <li><a href="${pageContext.request.contextPath}/indexServlet">主页</a></li>
+                <li><a href="${pageContext.request.contextPath}/indexServlet?id=${dinnerTable.id}">主页</a></li>
                 <li>
                     <a href="${pageContext.request.contextPath}/orderServlet?dinnerTableId=${dinnerTable.id}&method=checkOrder">我的订单</a>
                 </li>
@@ -142,10 +142,10 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li><a href="${pageContext.request.contextPath}/findUserServlet?id=${user.ID}">个人中心</a></li>
-                        <li><a href="#">购物车</a></li>
-                        <li><a href="#">设置</a></li>
+                        <%--<li><a href="#">购物车</a></li>--%>
+                        <%--<li><a href="#">设置</a></li>--%>
                         <li class="divider"></li>
-                        <li><a href="#">退出登录</a></li>
+                        <li><a href="${pageContext.request.contextPath}/userLogOfServlet">退出登录</a></li>
                     </ul>
                 </li>
                 <li><a href="${pageContext.request.contextPath}/admin_login.jsp">商家中心</a></li>
@@ -213,7 +213,8 @@
                     <ul class="list-group">
                         <c:if test="${empty foodList}">
                             <p style="text-align: center;color: red">
-                                <购物车为空>
+                                <br>
+                                购物车为空 ╮（╯＿╰）╭
                             </p>
                         </c:if>
 
@@ -269,13 +270,15 @@
                             <div>
                                 <ul class="nav navbar-nav">
                                     <li><a href="#">默认</a></li>
-                                    <li><a onclick="priceSort()">价格</a></li>
+                                    <%--<li><a onclick="priceSort()">价格</a></li>--%>
+                                    <li><a href="${pageContext.request.contextPath}/indexServlet?method=sort&id=${dinnerTable.id}">价格</a></li>
+
                                 </ul>
                             </div>
 
-                            <form class="navbar-form navbar-right" role="search">
+                            <form action="${pageContext.request.contextPath}/indexServlet?method=search&id=${dinnerTable.id}" class="navbar-form navbar-right" role="search" method="post">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="搜索">
+                                    <input type="text" class="form-control" name="searchName" placeholder="搜索">
                                 </div>
                                 <button type="submit" class="btn btn-default">
                                     <span class="glyphicon glyphicon-search"></span>

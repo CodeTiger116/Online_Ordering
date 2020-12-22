@@ -68,4 +68,18 @@ public interface FoodDao {
      * @return
      */
     Food findByFoodId(Integer foodId);
+
+    /**
+     * 价格排序
+     * @return
+     */
+    List<Food> sortByPrice();
+
+
+    /**
+     * 关键字查询
+     * @param searchName
+     * @return
+     */
+    List<Food> searchByName(String searchName);
 }

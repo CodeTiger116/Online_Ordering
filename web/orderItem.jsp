@@ -92,6 +92,11 @@
         </div>
     </div>
 </nav>
+
+<c:if test="${empty orders}">
+    空
+</c:if>
+
 <c:if test="${not empty orders}">
     <c:forEach items="${orders}" var="order" varStatus="s">
         <br>

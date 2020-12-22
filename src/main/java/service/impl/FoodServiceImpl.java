@@ -78,4 +78,14 @@ public class FoodServiceImpl implements FoodService {
     public Food findByFoodId(Integer foodId) {
         return dao.findByFoodId(foodId);
     }
+
+    @Override
+    public List<Food> sortByPrice() {
+        return dao.sortByPrice();
+    }
+
+    @Override
+    public List<Food> searchByName(String searchName) {
+        return dao.searchByName(searchName);
+    }
 }

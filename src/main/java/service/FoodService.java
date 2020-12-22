@@ -59,4 +59,16 @@ public interface FoodService {
      * @return
      */
     Food findByFoodId(Integer foodId);
+
+    /**
+     * 价格升序查询
+     * @return
+     */
+    List<Food> sortByPrice();
+
+    /**
+     * 主页搜索查询
+     * @return
+     */
+    List<Food> searchByName(String searchName);
 }

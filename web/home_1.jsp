@@ -29,7 +29,7 @@
         <div>
             <ul class="nav navbar-nav">
                 <li><a href="${pageContext.request.contextPath}/index_1Servlet">选择餐桌</a></li>
-                <li><a href="${pageContext.request.contextPath}/indexServlet">主页</a></li>
+                <li><a href="${pageContext.request.contextPath}/indexServlet?id=${dinnerTableId}">主页</a></li>
             </ul>
         </div>
         <div>
