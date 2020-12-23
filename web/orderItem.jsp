@@ -58,7 +58,7 @@
 </head>
 <body>
 <nav class="navbar navbar-inverse" role="navigation" id="mynav" style="margin: 0">
-    <div class="container">
+    <div class="container ">
         <div class="navbar-header">
             <a class="navbar-brand">
                 订餐系统
@@ -68,8 +68,11 @@
         <div>
             <ul class="nav navbar-nav">
                 <li><a href="${pageContext.request.contextPath}/index_1Servlet">选择餐桌</a></li>
-                <li><a href="${pageContext.request.contextPath}/indexServlet">主页</a></li>
-                <li><a href="#">入口三</a></li>
+                <li><a href="${pageContext.request.contextPath}/indexServlet?id=${dinnerTable.id}">主页</a></li>
+                <li>
+                    <a href="${pageContext.request.contextPath}/orderServlet?dinnerTableId=${dinnerTable.id}&method=checkOrder">我的订单</a>
+                </li>
+                <li><a href="${pageContext.request.contextPath}/newsFindServlet?method=homefind">新闻中心</a></li>
             </ul>
         </div>
         <div>
@@ -80,19 +83,18 @@
                         <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">个人中心</a></li>
-                        <li><a href="#">购物车</a></li>
-                        <li><a href="#">设置</a></li>
+                        <li><a href="${pageContext.request.contextPath}/findUserServlet?id=${user.ID}">个人中心</a></li>
+                        <%--<li><a href="#">购物车</a></li>--%>
+                        <%--<li><a href="#">设置</a></li>--%>
                         <li class="divider"></li>
-                        <li><a href="#">退出登录</a></li>
+                        <li><a href="${pageContext.request.contextPath}/userLogOfServlet">退出登录</a></li>
                     </ul>
                 </li>
-                <li><a href="#">商家中心</a></li>
+                <li><a href="${pageContext.request.contextPath}/admin_login.jsp">商家中心</a></li>
             </ul>
         </div>
     </div>
 </nav>
-
 <c:if test="${empty orders}">
     空
 </c:if>

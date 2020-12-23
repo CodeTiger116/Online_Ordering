@@ -34,7 +34,8 @@
             //foodTypeId   //刷新界面后为当前菜品类型
             var foodTypeId = $("#foodTypeId").val();
             //加入商品到购物车，需要知道foodId  dinnerTableId
-            window.location.href = "${pageContext.request.contextPath}/shopCarServlet?dinnerTableId=" + dinnerTableId + "&foodId=" + foodId + "&foodTypeId=" + foodTypeId + "&method=add";
+           /* window.location.href = "${pageContext.request.contextPath}/shopCarServlet?dinnerTableId=" + dinnerTableId + "&foodId=" + foodId + "&foodTypeId=" + foodTypeId + "&method=add";*/
+            window.location.href = "${pageContext.request.contextPath}/shopCarServlet?dinnerTableId=${dinnerTable.id}&foodId=" + foodId + "&foodTypeId=" + foodTypeId + "&method=add";
         }
 
         //购买数量输入框失去焦点事件
@@ -46,25 +47,29 @@
             if (num < 1 || isNaN(num)) {
                 obj.value = buyNum;
             } else if (num !== buyNum) {
-                window.location.href = "${pageContext.request.contextPath}/shopCarServlet?foodId=" + foodId + "&dinnerTableId=" + dinnerTableId + "&buyNum=" + Math.ceil(num) + "&foodTypeId=" + foodTypeId + "&method=update";
+                /*window.location.href = "${pageContext.request.contextPath}/shopCarServlet?foodId=" + foodId + "&dinnerTableId=" + dinnerTableId + "&buyNum=" + Math.ceil(num) + "&foodTypeId=" + foodTypeId + "&method=update";*/
+                window.location.href = "${pageContext.request.contextPath}/shopCarServlet?foodId=" + foodId + "&dinnerTableId=${dinnerTable.id}&buyNum=" + Math.ceil(num) + "&foodTypeId=" + foodTypeId + "&method=update";
             }
         }
 
 
         //删除购物车的菜品
         function deleteFn(dinnerTableId, foodId, foodTypeId) {
-            window.location.href = "${pageContext.request.contextPath}/shopCarServlet?dinnerTableId=" + dinnerTableId + "&foodId=" + foodId + "&foodTypeId=" + foodTypeId + "&method=delete";
+           /* window.location.href = "${pageContext.request.contextPath}/shopCarServlet?dinnerTableId=" + dinnerTableId + "&foodId=" + foodId + "&foodTypeId=" + foodTypeId + "&method=delete";*/
+            window.location.href = "${pageContext.request.contextPath}/shopCarServlet?dinnerTableId=${dinnerTable.id}&foodId=" + foodId + "&foodTypeId=" + foodTypeId + "&method=delete";
         }
 
         //占位/取消占位
         function orderDinner(dinnerTableId, tableStatus) {
-            window.location.href = "${pageContext.request.contextPath}/dinnerTableStatusServlet?dinnerTableId=" + dinnerTableId + "&tableStatus=" + tableStatus;
+           /* window.location.href = "${pageContext.request.contextPath}/dinnerTableStatusServlet?dinnerTableId=" + dinnerTableId + "&tableStatus=" + tableStatus;*/
+            window.location.href = "${pageContext.request.contextPath}/dinnerTableStatusServlet?dinnerTableId=${dinnerTable.id}&tableStatus=" + tableStatus;
         }
 
         //下单
         function order(dinnerTableId) {
             if (${total != 0}) {
-                window.location.href = "${pageContext.request.contextPath}/orderServlet?dinnerTableId=" + dinnerTableId + "&total=${total}&method=order";
+                /*window.location.href = "${pageContext.request.contextPath}/orderServlet?dinnerTableId=" + dinnerTableId + "&total=${total}&method=order";*/
+                window.location.href = "${pageContext.request.contextPath}/orderServlet?dinnerTableId=${dinnerTable.id}&total=${total}&method=order";
             } else {
                 alert("购物车为空！")
             }
@@ -271,10 +276,12 @@
                                 <ul class="nav navbar-nav">
                                     <li><a href="#">默认</a></li>
                                     <%--<li><a onclick="priceSort()">价格</a></li>--%>
-                                    <li><a href="${pageContext.request.contextPath}/indexServlet?method=sort&id=${dinnerTable.id}">价格</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/indexServlet?method=sort&id=${dinnerTable.id}">价格▼</a></li>
 
                                 </ul>
                             </div>
+
+
 
                             <form action="${pageContext.request.contextPath}/indexServlet?method=search&id=${dinnerTable.id}" class="navbar-form navbar-right" role="search" method="post">
                                 <div class="form-group">

@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Date;
 
@@ -23,6 +24,9 @@ public class DinnerTableStatusServlet extends HttpServlet {
         //根据id查询餐桌（方法已经存在）
         DinnerTableService service = new DinnerTableServiceImpl();
         DinnerTable dinnerTable = service.findByTableId(dinnerTableId);
+
+        HttpSession session = request.getSession();
+        session.setAttribute("dinnerTable",dinnerTable);
 
         //
         dinnerTable.setTable_status(Integer.parseInt(tableStatus));
