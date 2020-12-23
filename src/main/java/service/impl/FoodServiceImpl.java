@@ -88,4 +88,9 @@ public class FoodServiceImpl implements FoodService {
     public List<Food> searchByName(String searchName) {
         return dao.searchByName(searchName);
     }
+
+    @Override
+    public void deleteFood(String id, int i) {
+        dao.deleteFood(id,i);
+    }
 }

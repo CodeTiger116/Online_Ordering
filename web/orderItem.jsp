@@ -54,6 +54,10 @@
             color: gray;
             font-size: small;
         }
+        .btn{
+            background: dodgerblue;
+            color: white;
+        }
     </style>
 </head>
 <body>
@@ -73,6 +77,7 @@
                     <a href="${pageContext.request.contextPath}/orderServlet?dinnerTableId=${dinnerTable.id}&method=checkOrder">我的订单</a>
                 </li>
                 <li><a href="${pageContext.request.contextPath}/newsFindServlet?method=homefind">新闻中心</a></li>
+                <li><a href="${pageContext.request.contextPath}/commentList_2.jsp">评论区</a></li>
             </ul>
         </div>
         <div>
@@ -95,11 +100,7 @@
         </div>
     </div>
 </nav>
-<c:if test="${empty orders}">
-    空
-</c:if>
-
-<c:if test="${not empty orders}">
+<%--<c:if test="${not empty orders}">
     <c:forEach items="${orders}" var="order" varStatus="s">
         <br>
         <p style="color: red">订单${s.count}------------------------------------------------------------------------------------------</p>
@@ -122,8 +123,85 @@
             <input type="button" onclick="delOrder(${order.id})" value="取消订单">
         </c:if>
     </c:forEach>
-</c:if>
+</c:if>--%>
+<div class="container">
+    <ul class="list-group">
+        <c:if test="${not empty orders}">
+            <c:forEach items="${orders}" var="order" varStatus="s">
+                <li class="list-group-item">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <h3 class="panel-title" style="width: 200px;">
+                                        订单${s.count}
+                                    </h3>
+                                </div>
+                                <div class="col-xs-6">
+                                    <div>
+                                        <div style="float: right;margin:0 5px">
+                                            <button class="btn btn-default" onclick="delOrder(${order.id})">取消订单</button>
+                                        </div>
+                                        <div style="float: right;margin:0 5px" >
+                                            <button class="btn btn-default" onclick="pay(${order.id})">确认付款</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-body" style="overflow-y: scroll">
+                            <c:if test="${not empty order.orderDetails}">
+                                <c:forEach items="${order.orderDetails}" var="orderDetail" varStatus="s">
+                                    <div class="row">
+                                        <div class="col-xs-3" style="height: 140px;padding: 0 20px 0 20px">
+                                            <a href="${pageContext.request.contextPath}/findFoodDetailServlet?dinnerTableId=${dinnerTable.id}&id=${orderDetail.food_id}">
+                                                <img src="${pageContext.request.contextPath}/upload/food/${orderDetail.food.img}" alt="加载失败" style="width: 150px;height: 150px">
+                                            </a>
+                                        </div>
+                                        <div class="col-xs-9">
+                                            <div class="row">
+                                                <div class="col-xs-6">
+                                                    菜品${s.count}：${orderDetail.food.food_name}
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    购买数量：${orderDetail.food.buyNum}
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <ul class="list-group">
+                                                    <li class="list-group-item">
+                                                        原价：￥${orderDetail.food.price}
+                                                    </li>
+                                                    <li class="list-group-item">
+                                                        折后价：￥<strong style="color: red">${orderDetail.food.price * orderDetail.food.discount}</strong>
+                                                    </li>
+                                                    <li class="list-group-item">
+                                                        共省: ￥${orderDetail.food.price - orderDetail.food.price * orderDetail.food.discount}
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </c:forEach>
+                            </c:if>
 
+                        </div>
+                        <div class="panel-footer">
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    订单编号：<a>${order.order_code}</a>
+                                </div>
+                                <div class="col-xs-6" style="text-align: right">
+                                    订单日期：<span style="color: dodgerblue">${order.order_Date}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </c:forEach>
+        </c:if>
+    </ul>
+</div>
 
 
 </body>

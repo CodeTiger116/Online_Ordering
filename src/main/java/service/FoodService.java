@@ -71,4 +71,11 @@ public interface FoodService {
      * @return
      */
     List<Food> searchByName(String searchName);
+
+    /**
+     * 逻辑删除
+     * @param id
+     * @param i
+     */
+    void deleteFood(String id, int i);
 }

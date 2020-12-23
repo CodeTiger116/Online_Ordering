@@ -40,6 +40,7 @@
                 <li><a href="${pageContext.request.contextPath}/newsFindServlet?method=homefind">新闻中心</a></li>
             </ul>
         </div>
+
         <div>
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">

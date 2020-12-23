@@ -10,26 +10,49 @@
 <html>
 <head>
     <title>订单管理</title>
+
+    <style>
+        #orderList>tr>td{
+            height: 60px;
+        }
+        .order{
+            overflow:hidden;
+            word-break:keep-all;
+            white-space:nowrap;
+            text-overflow:ellipsis;
+        }
+    </style>
+
+
+
 </head>
 <body>
 
-<div class="">
+<div class="" style="margin-top: 20px">
 
     <div style="float: right; margin: 5px">
         <a class="btn btn-primary" href="${pageContext.request.contextPath}/foodAddServlet">添加菜品</a></td>
     </div>
 
-    <table border="1" class="table table-bordered table-hover">
+    <table border="1" class="table table-bordered table-hover"
+           style=" width: 100%;
+           table-layout: fixed;
+           text-overflow: ellipsis;
+           -moz-text-overflow: ellipsis;
+           overflow: hidden;
+           white-space: nowrap;
+           text-align: left " id="orderList">
+
         <tr class="success">
 
-            <th>编号</th>
+            <th width="60px>编号</th>
 
-            <th style="width: 30%">订单编号</th>
+            <th width="200px">订单编号</th>
             <th>桌号</th>
             <th>总价</th>
             <th>付款状态</th>
-            <th>下单时间</th>
-            <th>支付时间</th>
+            <th width="150px">下单时间</th>
+            <th width="150px">支付时间</th>
             <th>订单状态</th>
 
             <th>操作</th>
@@ -40,7 +63,7 @@
             <tr>
 
                 <td>${s.count + (pb.currentPage - 1) * 5}</td>
-                <td>${order.order_code}</td>
+                <td class="order" title="${order.order_code}">${order.order_code}</td>
                 <td>${order.table_id}</td>
                 <td>${order.total_Price}</td>
                 <c:if test="${order.order_Status == 0}">
@@ -50,8 +73,8 @@
                     <td>已付款</td>
                 </c:if>
 
-                <td>${order.order_Date}</td>
-                <td>${order.pay_date}</td>
+                <td class="order" title="${order.order_Date}">${order.order_Date}</td>
+                <td class="order" title="${order.pay_date}">${order.pay_date}</td>
 
                 <c:if test="${order.disabled == 0}">
                     <td>存在</td>

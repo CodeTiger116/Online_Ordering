@@ -149,4 +149,10 @@ public class FoodDaoImpl implements FoodDao {
         List<Food> foods = template.query(sql, new BeanPropertyRowMapper<Food>(Food.class),params.toArray());
         return foods;
     }
+
+    @Override
+    public void deleteFood(String id, int i) {
+        String sql = "update tb_food set DISABLED = ? where ID = ?";
+        template.update(sql,i,id);
+    }
 }

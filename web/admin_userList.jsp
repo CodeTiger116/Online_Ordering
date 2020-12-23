@@ -33,7 +33,7 @@
 
     <table border="1" class="table table-bordered table-hover">
         <tr class="success">
-            <th>编号</th>
+            <th >编号</th>
             <th>登录名</th>
             <th>密码</th>
             <th>电话</th>
@@ -47,7 +47,8 @@
             <tr>
                 <td>${s.count}</td>
                 <td>${user.LOGIN_NAME}</td>
-                <td>${user.PASSWORD}</td>
+                <%--<td>${user.PASSWORD}</td>--%>
+                <td>******</td>
                 <td>${user.PHONE}</td>
                 <td>${user.EMAIL}</td>
                 <td>${user.CREATE_DATE}</td>

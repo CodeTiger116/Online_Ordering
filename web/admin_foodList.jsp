@@ -15,6 +15,20 @@
     <script src="js/jquery-2.1.0.min.js"></script>
     <!-- 3. 导入bootstrap的js文件 -->
     <script src="js/bootstrap.min.js"></script>--%>
+
+    <style>
+        #foodList>tr>td{
+            height: 60px;
+        }
+        .food{
+            overflow:hidden;
+            word-break:keep-all;
+            white-space:nowrap;
+            text-overflow:ellipsis;
+        }
+    </style>
+
+
 </head>
 <body>
 
@@ -65,21 +79,25 @@
            -moz-text-overflow: ellipsis;
            overflow: hidden;
            white-space: nowrap;
-           text-align: left ">
+           text-align: left " id="foodList">
 
         <tr class="success">
 
-            <th>编号</th>
-            <th>名称</th>
-            <th>菜品类型</th>
-            <th>价格</th>
-            <th>折扣 </th>
-            <th style="width: 30%; overflow: hidden;white-space: nowrap;-moz-text-overflow: ellipsis;">描述 </th>
+        <tr class="success">
+
+            <th width="60px">编号</th>
+            <th width="180px" >名称</th>
+            <th width="100px">菜品类型</th>
+            <th width="80px">价格</th>
+            <th width="80px">折扣 </th>
+            <th>描述 </th>
             <th>图片 </th>
-            <th>创建时间 </th>
-            <th>更新时间 </th>
-            <th>状态</th>
+            <th width="150px">创建时间 </th>
+            <th width="150px">更新时间 </th>
+            <th width="50px">状态</th>
             <th>操作</th>
+
+        </tr>
 
         </tr>
 
@@ -87,18 +105,38 @@
             <tr>
 
                 <td>${s.count + (pb.currentPage - 1) * 5}</td>
-                <td>${food.food_name}</td>
+                <td class="food" title="${food.food_name}">${food.food_name}</td>
                 <td>${food.foodType_id}</td>
                 <td>${food.price}</td>
                 <td>${food.discount}</td>
-                <td style="overflow: hidden;white-space: normal;-moz-text-overflow: ellipsis;">${food.remark}</td>
-                <td>${food.img}</td>
-                <td>${food.create_date}</td>
-                <td>${food.update_date}</td>
-                <td>${food.disabled}</td>
+                <td class="food" title="${food.remark}">${food.remark}</td>
+
+               <%-- <td class="food" title="${food.img}">${food.img}</td>--%>
+                <td><img src="${pageContext.request.contextPath}/upload/food/${food.img}" width="30px"></td>
+
+                <td class="food" title="${food.create_date}">${food.create_date}</td>
+                <td class="food" title="${food.update_date}">${food.update_date}</td>
+
+                <c:if test="${food.disabled == 0}">
+                    <td>未删除</td>
+                </c:if>
+
+                <c:if test="${food.disabled == 1}">
+                    <td>已删除</td>
+                </c:if>
+
 
                 <td><a class="btn btn-default btn-sm" href="${pageContext.request.contextPath}/foodFindByIdServlet?id=${food.id}">修改</a>&nbsp;
-                    <a class="btn btn-default btn-sm" href="${pageContext.request.contextPath}/foodDeleteServlet?id=${food.id}">删除</a></td>
+
+                    <c:if test="${food.disabled == 0}">
+                    <a class="btn btn-default btn-sm" href="${pageContext.request.contextPath}/foodDeleteServlet?method=del&id=${food.id}">删除</a>
+                    </c:if>
+
+                    <c:if test="${food.disabled == 1}">
+                        <a class="btn btn-default btn-sm" href="${pageContext.request.contextPath}/foodDeleteServlet?method=revoke&id=${food.id}">添加</a>
+                    </c:if>
+                </td>
+
             </tr>
         </c:forEach>
 

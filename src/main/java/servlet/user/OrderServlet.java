@@ -29,9 +29,11 @@ public class OrderServlet extends HttpServlet {
 
         OrderService service = new OrderServiceImpl();
 
+        //下单，将购物车中的信息保存在订单表
+        HttpSession session = request.getSession();
+
         if(method != null && method.equals("order")){
-            //下单，将购物车中的信息保存在订单表
-            HttpSession session = request.getSession();
+
 
 
             //根据餐桌id获取购物车
@@ -65,6 +67,7 @@ public class OrderServlet extends HttpServlet {
             }
 
         }else if(method != null && method.equals("checkOrder")){
+
             //跳转到订单详情界面，查询餐桌未删除的订单
             //订单id  订单编号  下单时间   各个菜品及相应的购买数量和价格（原价、折扣价）   总价
             //涉及订单表、订单明细表、菜品表
@@ -92,7 +95,9 @@ public class OrderServlet extends HttpServlet {
             service.update(order);
 
             //System.out.println(order);
+
             //付款成功，取消占位
+            session.removeAttribute("dinnerTable");
 
             //返回
             response.sendRedirect(request.getContextPath()+"/index_1Servlet");

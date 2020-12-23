@@ -70,6 +70,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public List<Order> findByDinnerTableId(int tableId) {
+        
         //根据餐桌id查询未删除的未付款的订单
         List<Order> orders = dao.findByDinnerTableId(tableId);
 
@@ -78,6 +79,7 @@ public class OrderServiceImpl implements OrderService {
         //遍历所有的订单，根据订单id查询订单明细
         if(orders != null && orders.size() > 0){
             for(Order order : orders){
+
                 List<OrderDetail>  details = dao.findByOrderId(order.getId());
 
                 //System.out.println("------"+details);

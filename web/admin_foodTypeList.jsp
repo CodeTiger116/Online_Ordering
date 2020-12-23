@@ -17,18 +17,41 @@
     <script src="js/jquery-2.1.0.min.js"></script>
     <!-- 3. 导入bootstrap的js文件 -->
     <script src="js/bootstrap.min.js"></script>--%>
+
+    <script type="text/javascript">
+
+        function deleteFoodType(){
+            if(confirm("确定删除该条内容？")){
+                //访问路径
+                //location.href = "${pageContext.request.contextPath}/;
+            }
+        }
+
+        function add(){
+            //window.open("admin_foodTypeAdd.jsp");
+
+            prompt("请输入想要添加的菜品类型名称","新品上市");
+
+        }
+
+    </script>
+
 </head>
 <body>
-<div class="">
+<div class="" style="margin-top: 20px">
 
-    <div style="float: right; margin: 5px">
+    <div style="float: right; margin:5px">
+         <a class="btn btn-primary" onclick="add()">添加菜品类型</a></td>
+    </div>
+
+    <div style="float: left; margin:5px">
         <a class="btn btn-primary" href="${pageContext.request.contextPath}/admin_home.jsp">返回</a></td>
     </div>
 
     <table border="1" class="table table-bordered table-hover">
         <tr class="success">
 
-            <th>编号</th>
+            <th >编号</th>
             <th>名称</th>
             <th>创建时间</th>
             <th>更新时间</th>
@@ -44,10 +67,19 @@
                 <td>${foodType.type_name}</td>
                 <td>${foodType.create_date}</td>
                 <td>${foodType.update_date}</td>
-                <td>${foodType.disabled}</td>
 
-                <td ><a  class="btn btn-default btn-sm" href="">修改</a>&nbsp;
-                    <a class="btn btn-default btn-sm" href="">删除</a></td>
+                <c:if test="${foodType.disabled == 0}">
+                    <td>未删除</td>
+                </c:if>
+
+                <c:if test="${foodType.disabled == 1}">
+                    <td>未删除</td>
+                </c:if>
+
+
+
+                <td ><a  class="btn btn-default btn-sm" href="${pageContext.request.contextPath}/admin_foodTypeUpdate.jsp">修改</a>&nbsp;
+                    <a class="btn btn-default btn-sm" onclick="deleteFoodType()">删除</a></td>
             </tr>
         </c:forEach>
 

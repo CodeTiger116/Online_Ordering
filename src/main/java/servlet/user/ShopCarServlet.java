@@ -45,8 +45,6 @@ public class ShopCarServlet extends HttpServlet {
 
 
 
-
-
             if(shopCar != null){
                 //购物车有商品
                 //判断当前购物车中，是否已经有当前需要加入到购物车的商品
@@ -70,6 +68,7 @@ public class ShopCarServlet extends HttpServlet {
         //测试
         Set<Integer> foodIds2 = shopCar.keySet();
         for(Integer foodid : foodIds2){
+
             System.out.println(foodid + ":" + shopCar.get(foodid));
         }*/
 

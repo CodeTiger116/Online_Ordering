@@ -136,6 +136,7 @@
                     <a href="${pageContext.request.contextPath}/orderServlet?dinnerTableId=${dinnerTable.id}&method=checkOrder">我的订单</a>
                 </li>
                 <li><a href="${pageContext.request.contextPath}/newsFindServlet?method=homefind">新闻中心</a></li>
+                <li><a href="${pageContext.request.contextPath}/commentList_2.jsp">评论区</a></li>
             </ul>
         </div>
         <div>
@@ -234,11 +235,11 @@
                                                     pattern="0.00"/></strong></a>
                                         </div>
                                     </div>
-                                    <div class="row-fluid" style="padding-left: 100px;margin-top: 10px">
+                                    <div class="row-fluid" style="padding-left: 80px;margin-top: 10px">
                                             <input name="id" value="${foodList.id}" type="hidden">
                                             <input name="buyNum" value="${foodList.buyNum}"
                                                    onblur="blurFn(this,${foodList.id},${foodList.buyNum},${dinnerTable.id},${foodList.foodType_id})"
-                                                   style="width: 20px;height:20px;border-radius: 3px;border: 1px solid #a3a3a3; text-align: right;padding: 2px 4px;">
+                                                   style="width: 40px;height:20px;border-radius: 3px;border: 1px solid #a3a3a3; text-align: left;padding: 2px 4px;">
                                             份
                                         <button type="button" class="btn btn-default" style="padding: 2px;" onclick="deleteFn(${dinnerTable.id},${foodList.id},${foodList.foodType_id});">
                                             <img src="images/delete.svg" alt="删除" style="width: 15px;height: 15px">
@@ -359,8 +360,9 @@
     </div>
 </div>
 
-<h1 style="text-align: center">评论模块</h1>
-<h1 style="text-align: center">......</h1>
+<div style="height: 100px">
+
+</div>
 
 <div class="container-fluid " style="height: 120px;background: #1C1C1C">
     <div class="row">
