@@ -18,7 +18,7 @@
     <script type="text/javascript">
         //付款
         function pay(orderId){
-            window.location.href = "${pageContext.request.contextPath}/orderServlet?orderId="+orderId+"&method=pay";
+            window.location.href = "${pageContext.request.contextPath}/orderServlet?dinnerTableId=${dinnerTable.id}&orderId="+orderId+"&method=pay";
             alert("付款成功！欢迎下次光临！")
 
             //付款完成，取消占位
@@ -164,7 +164,7 @@
                                                     菜品${s.count}：${orderDetail.food.food_name}
                                                 </div>
                                                 <div class="col-xs-6">
-                                                    购买数量：${orderDetail.food.buyNum}
+                                                    购买数量：${orderDetail.buyNum}
                                                 </div>
                                             </div>
                                             <div class="row">

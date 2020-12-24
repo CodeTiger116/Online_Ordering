@@ -78,4 +78,11 @@ public interface FoodService {
      * @param i
      */
     void deleteFood(String id, int i);
+
+    /**
+     * 按价格区间查询
+     * @param
+     * @return
+     */
+    List<Food> searchByLeftRight(int left, int right);
 }

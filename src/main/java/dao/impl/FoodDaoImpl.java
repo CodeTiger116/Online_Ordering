@@ -155,4 +155,13 @@ public class FoodDaoImpl implements FoodDao {
         String sql = "update tb_food set DISABLED = ? where ID = ?";
         template.update(sql,i,id);
     }
+
+    @Override
+    public List<Food> findByLeftRight(int left ,int right) {
+
+        String sql = "select * from tb_food where price between ? and ?  ORDER BY price ASC;";
+        List<Food> foods = template.query(sql, new BeanPropertyRowMapper<Food>(Food.class), left, right);
+
+        return foods;
+    }
 }

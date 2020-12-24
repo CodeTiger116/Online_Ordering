@@ -1,6 +1,7 @@
 package service;
 
 import bean.Order;
+import bean.OrderDetail;
 import bean.PageBean;
 
 import java.util.List;
@@ -41,4 +42,11 @@ public interface OrderService {
      * @param order
      */
     void update(Order order);
+
+    /**
+     * 根据id查询订单明细
+     * @return
+     * @param orderId
+     */
+    List<OrderDetail> findByOrderId(String orderId);
 }

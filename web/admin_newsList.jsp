@@ -73,7 +73,7 @@
             <tr>
                 <td>${s.count}</td>
                 <td title="${neww.title}" class="news">${neww.title}</td>
-                <td title="${neww.content}" class="news">${neww.content}</td>
+                <td title="${neww.content}" class="news">**********</td>
                 <td>${neww.push_date}</td>
                 <td>${neww.update_date}</td>
                 <td><a class="btn btn-default btn-sm" href="javascript:deleteNews(${neww.id});">删除</a>

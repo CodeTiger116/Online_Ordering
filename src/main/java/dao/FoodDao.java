@@ -89,4 +89,11 @@ public interface FoodDao {
      * @param i
      */
     void deleteFood(String id, int i);
+
+    /**
+     * 按价格区间查询
+     * @param condition
+     * @return
+     */
+    List<Food> findByLeftRight(int left,int right);
 }

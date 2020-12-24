@@ -93,4 +93,9 @@ public class FoodServiceImpl implements FoodService {
     public void deleteFood(String id, int i) {
         dao.deleteFood(id,i);
     }
+
+    @Override
+    public List<Food> searchByLeftRight(int left,int right) {
+        return dao.findByLeftRight(left,right);
+    }
 }

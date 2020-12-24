@@ -1,6 +1,5 @@
 package service.impl;
 
-import bean.Food;
 import bean.Order;
 import bean.OrderDetail;
 import bean.PageBean;
@@ -102,5 +101,11 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public void update(Order order) {
         dao.update(order);
+    }
+
+    @Override
+    public List<OrderDetail> findByOrderId(String orderId) {
+
+        return dao.findByOrderId(Integer.parseInt(orderId));
     }
 }

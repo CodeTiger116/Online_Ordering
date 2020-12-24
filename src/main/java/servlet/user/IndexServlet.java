@@ -91,6 +91,28 @@ public class IndexServlet extends HttpServlet {
                 //System.out.println(searchName);
                 request.setAttribute("foods",foods);
                 //System.out.println(foods);
+            }else if(method != null && method.equals("leftRight")){
+
+                String left = request.getParameter("leftPrice");
+                String right = request.getParameter("rightPrice");
+
+
+
+                if(left == null || left.equals("")){
+                    left = "0";
+                }
+
+                if(right == null || right.equals("")){
+                    right = "199";
+                }
+
+                System.out.println(left);
+                System.out.println(right);
+
+                List<Food> foods = foodService.searchByLeftRight(Integer.parseInt(left),Integer.parseInt(right));
+
+                //System.out.println(searchName);
+                request.setAttribute("foods",foods);
             }
 
 
@@ -143,6 +165,7 @@ public class IndexServlet extends HttpServlet {
 
             request.setAttribute("foodList",foodList);
             //System.out.println(foodList);
+
 
             request.getRequestDispatcher("/home.jsp").forward(request,response);
 

@@ -30,8 +30,9 @@
 
 <div class="" style="margin-top: 20px">
 
-    <div style="float: right; margin: 5px">
-        <a class="btn btn-primary" href="${pageContext.request.contextPath}/foodAddServlet">添加菜品</a></td>
+
+    <div style="float: left; margin: 5px">
+        <a class="btn btn-primary" href="#">返回</a></td>
     </div>
 
     <table border="1" class="table table-bordered table-hover"
@@ -45,7 +46,7 @@
 
         <tr class="success">
 
-            <th width="60px>编号</th>
+            <th width="60px">编号</th>
 
             <th width="200px">订单编号</th>
             <th>桌号</th>
@@ -80,7 +81,10 @@
                     <td>存在</td>
                 </c:if>
 
-                <td><a class="btn btn-default btn-sm" href="#">删除</a></td>
+                <td>
+                    <a class="btn btn-default btn-sm" href="#">删除</a>
+                    <a class="btn btn-default btn-sm" href="${pageContext.request.contextPath}/adminOrderDetailServlet?orderId=${order.id}">详情</a>
+                </td>
 
             </tr>
         </c:forEach>

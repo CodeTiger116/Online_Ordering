@@ -25,7 +25,7 @@ public class FindUserServlet extends HttpServlet {
         User user =  service.FindUserById(id);
 
         request.setAttribute("user",user);
-        request.getRequestDispatcher("/myinfo.jsp").forward(request,response);
+        request.getRequestDispatcher("/myInfo.jsp").forward(request,response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -73,6 +73,7 @@ public class OrderServlet extends HttpServlet {
             //涉及订单表、订单明细表、菜品表
 
             List<Order> orders = service.findByDinnerTableId(Integer.parseInt(dinnerTableId));
+            //System.out.println(orders);
 
 
             request.setAttribute("orders",orders);
@@ -80,6 +81,7 @@ public class OrderServlet extends HttpServlet {
 
             //跳转到订单详情界面
             request.getRequestDispatcher("/orderItem.jsp").forward(request,response);
+
         }else if(method != null && method.equals("pay")){
 
             //订单id
@@ -94,13 +96,25 @@ public class OrderServlet extends HttpServlet {
             //更新，方便复用
             service.update(order);
 
-            //System.out.println(order);
+
+            List<Order> orders = service.findByDinnerTableId(Integer.parseInt(dinnerTableId));
+
+            //System.out.println(orders);
+
+            if(orders == null || orders.size() == 0){
+                session.removeAttribute("dinnerTable");
+                response.sendRedirect(request.getContextPath()+"/index_1Servlet");
+            }else {
+                request.setAttribute("orders",orders);
+                request.getRequestDispatcher("/orderItem.jsp").forward(request,response);
+            }
 
             //付款成功，取消占位
-            session.removeAttribute("dinnerTable");
+            // session.removeAttribute("dinnerTable");
 
             //返回
-            response.sendRedirect(request.getContextPath()+"/index_1Servlet");
+            //
+
 
         }
     }

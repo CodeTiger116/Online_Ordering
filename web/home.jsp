@@ -177,7 +177,7 @@
         <c:forEach items="${foods_1s}" var="food_1">
             <div class="item">
                 <a href="#" class="thumbnail">
-                    <img src="${pageContext.request.contextPath}/upload/food/${food_1.img}" style=" width: 100%"
+                    <img src="${pageContext.request.contextPath}/upload/food/${food_1.img}" style=" width: 800px;height: 500px"
                          alt="Second slide">
                 </a>>
             </div>
@@ -283,6 +283,17 @@
                             </div>
 
 
+                            <form action="${pageContext.request.contextPath}/indexServlet?method=leftRight&id=${dinnerTable.id}" class="navbar-form navbar-left" role="search" method="post">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="leftPrice" style="width: 70px"  placeholder="0.00">
+                                    ~
+                                    <input type="text" class="form-control" name="rightPrice" style="width: 70px"  placeholder="199.00">
+                                </div>
+                                <button type="submit" class="btn btn-default">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </button>
+                            </form>
+
 
                             <form action="${pageContext.request.contextPath}/indexServlet?method=search&id=${dinnerTable.id}" class="navbar-form navbar-right" role="search" method="post">
                                 <div class="form-group">
@@ -297,6 +308,7 @@
                 </div>
 
                 <div class="row" style="height: 648px;overflow-y: scroll">
+                    <c:if test="${not empty foods}">
                     <c:forEach items="${foods}" var="food">
                         <div class="col-xs-6 col-md-3" style="width: 25%;">
                                 <%--<div style="width: 100%;height: 100%">
@@ -354,6 +366,11 @@
                             </div>
                         </div>
                     </c:forEach>
+                    </c:if>
+
+                    <c:if test="${empty foods}">
+                        神马也没有
+                    </c:if>
                 </div>
             </div>
         </div>

@@ -44,7 +44,7 @@ public class AdminLoginServlet extends HttpServlet {
         if(loginManager != null){
             //登陆成功
             session.setAttribute("admin",loginManager);
-            response.sendRedirect(request.getContextPath()+"/admin_home.jsp");
+            response.sendRedirect(request.getContextPath()+"/userListServlet");
         }else{
             //登陆失败
             request.setAttribute("admin_login_msg","用户名或密码错误");

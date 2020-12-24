@@ -20,7 +20,6 @@
   <!-- 3. 导入bootstrap的js文件 -->
   <script src="js/bootstrap.min.js"></script>
   <script type="text/javascript">
-
     //切换验证码
     function refreshCode(){
       //1.获取验证码图片对象
