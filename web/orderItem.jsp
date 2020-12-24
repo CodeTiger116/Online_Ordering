@@ -154,7 +154,7 @@
                                 <c:forEach items="${order.orderDetails}" var="orderDetail" varStatus="s">
                                     <div class="row">
                                         <div class="col-xs-3" style="height: 140px;padding: 0 20px 0 20px">
-                                            <a href="${pageContext.request.contextPath}/findFoodDetailServlet?dinnerTableId=${dinnerTable.id}&id=${orderDetail.food_id}">
+                                            <a href="${pageContext.request.contextPath}/findFoodDetailServlet?dinnerTableId=${dinnerTable.id}&foodID=${orderDetail.food_id}">
                                                 <img src="${pageContext.request.contextPath}/upload/food/${orderDetail.food.img}" alt="加载失败" style="width: 150px;height: 150px">
                                             </a>
                                         </div>

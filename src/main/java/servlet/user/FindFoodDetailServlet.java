@@ -15,7 +15,7 @@ import java.io.IOException;
 public class FindFoodDetailServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String id = request.getParameter("id");
+        String id = request.getParameter("foodID");
         String dinnerTableId = request.getParameter("dinnerTableId");
 
         FoodService foodService = new FoodServiceImpl();
