@@ -61,7 +61,6 @@ public class FoodDaoImpl implements FoodDao {
         StringBuilder sb = new StringBuilder(sql);
         //2、遍历map
         Set<String> keySet = condition.keySet();
-
         //定义参数的集合
         List<Object> params = new ArrayList<Object>();
 
@@ -71,7 +70,6 @@ public class FoodDaoImpl implements FoodDao {
             if("currentPage".equals(key) || "rows".equals(key)){
                 continue;
             }
-
             //获取value
             String value = condition.get(key)[0];
             //判断value是否有值
@@ -80,13 +78,11 @@ public class FoodDaoImpl implements FoodDao {
                 params.add("%"+value+"%");//条件的值
             }
         }
-
         //添加分页查询
         sb.append(" limit ?,? ");
         //添加分页查询参数值
         params.add(start);
         params.add(rows);
-
 
         return template.query(sb.toString(),new BeanPropertyRowMapper<Food>(Food.class),params.toArray());
     }

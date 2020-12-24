@@ -34,8 +34,6 @@ public class OrderServlet extends HttpServlet {
 
         if(method != null && method.equals("order")){
 
-
-
             //根据餐桌id获取购物车
             Map<Integer,Integer> shopCar = (Map<Integer, Integer>) session.getAttribute(dinnerTableId);
 
@@ -54,9 +52,7 @@ public class OrderServlet extends HttpServlet {
 
                 List<Order> orders = service.findByDinnerTableId(Integer.parseInt(dinnerTableId));
 
-
                 request.setAttribute("orders",orders);
-
 
                 //跳转到订单详情界面
                 request.getRequestDispatcher("/orderItem.jsp").forward(request,response);
@@ -96,11 +92,9 @@ public class OrderServlet extends HttpServlet {
             //更新，方便复用
             service.update(order);
 
-
             List<Order> orders = service.findByDinnerTableId(Integer.parseInt(dinnerTableId));
 
             //System.out.println(orders);
-
             if(orders == null || orders.size() == 0){
                 session.removeAttribute("dinnerTable");
                 response.sendRedirect(request.getContextPath()+"/index_1Servlet");
@@ -108,14 +102,7 @@ public class OrderServlet extends HttpServlet {
                 request.setAttribute("orders",orders);
                 request.getRequestDispatcher("/orderItem.jsp").forward(request,response);
             }
-
-            //付款成功，取消占位
-            // session.removeAttribute("dinnerTable");
-
-            //返回
-            //
-
-
+            
         }
     }
 

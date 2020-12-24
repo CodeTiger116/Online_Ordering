@@ -147,12 +147,10 @@ public class IndexServlet extends HttpServlet {
                     //通过菜品的id查询菜品
                     Food food = foodService.findByFoodId(foodId);
                     //System.out.println(food);
-
                     //通过key获取value,即购买数量
                     Integer buyNum = shopCar.get(foodId);
                     food.setBuyNum(buyNum);
                     foodList.add(food);
-
 
                     //当前商品价格
                     Double price = food.getPrice() * food.getDiscount() * food.getBuyNum();
@@ -162,11 +160,9 @@ public class IndexServlet extends HttpServlet {
 
             //总价
             request.setAttribute("total",total);
-
             request.setAttribute("foodList",foodList);
             //System.out.println(foodList);
-
-
+            
             request.getRequestDispatcher("/home.jsp").forward(request,response);
 
         }

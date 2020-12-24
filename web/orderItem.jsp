@@ -126,6 +126,10 @@
 </c:if>--%>
 <div class="container">
     <ul class="list-group">
+        <c:if test="${empty orders}">
+            空
+        </c:if>
+
         <c:if test="${not empty orders}">
             <c:forEach items="${orders}" var="order" varStatus="s">
                 <li class="list-group-item">

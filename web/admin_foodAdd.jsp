@@ -57,11 +57,11 @@
     <form id="form" action="${pageContext.request.contextPath}/foodAddServlet" enctype="multipart/form-data" method="post">
 
         <!--隐藏域，提交id-->
-        <input type="hidden" name = "id" value="${user.id}">
+        <input type="hidden" name = "id" >
 
         <div class="form-group">
             <label for="food_name">菜名：</label>
-            <input type="text" class="form-control" id="food_name" name="food_name" value="${user.name}"  placeholder="请输入名称" />
+            <input type="text" class="form-control" id="food_name" name="food_name"   placeholder="请输入名称" />
         </div>
 
 
@@ -79,12 +79,12 @@
 
         <div class="form-group">
             <label for="price">价格：</label>
-            <input type="text" class="form-control" id="price" name="price" value="${user.qq}" placeholder="请输入价格"/>
+            <input type="text" class="form-control" id="price" name="price"  placeholder="请输入价格"/>
         </div>
 
         <div class="form-group">
             <label for="discount">折扣：</label>
-            <input type="text" class="form-control" id="discount" name="discount" value="${user.email}" placeholder="请输入折扣"/>
+            <input type="text" class="form-control" id="discount" name="discount"  placeholder="请输入折扣"/>
         </div>
 
         <div class="form-group">

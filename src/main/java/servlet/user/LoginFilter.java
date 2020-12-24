@@ -13,7 +13,7 @@ public class LoginFilter implements Filter {
 
 
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws ServletException, IOException {
-        System.out.println(req);
+        //System.out.println(req);
         //0.强制转换
         HttpServletRequest request = (HttpServletRequest) req;
 
